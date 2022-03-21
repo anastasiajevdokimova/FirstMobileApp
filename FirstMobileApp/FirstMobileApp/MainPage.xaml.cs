@@ -10,7 +10,7 @@ namespace FirstMobileApp
 {
     public partial class MainPage : ContentPage
     {
-        Button box_btn, entry_btn, timer_btn, date_btn, ss_btn, rgb_sl_btn;
+        Button box_btn, entry_btn, timer_btn, date_btn, ss_btn, rgb_sl_btn, frame_btn, img_btn;
         public MainPage()
         {
             //создаём первую кнопку
@@ -58,10 +58,27 @@ namespace FirstMobileApp
             };
             rgb_sl_btn.Clicked += Start_Pages;
 
-                //В Layout добавляем созданные ранее элементы
-                StackLayout st = new StackLayout
+            frame_btn = new Button
             {
-                Children = { box_btn, entry_btn, timer_btn, date_btn, ss_btn, rgb_sl_btn }
+                Text = "Frame Page",
+                BackgroundColor = Color.Purple,
+                TextColor = Color.White
+            };
+            frame_btn.Clicked += Start_Pages;
+
+            img_btn = new Button
+            {
+                Text = "Image Slider",
+                BackgroundColor = Color.Purple,
+                TextColor = Color.White
+            };
+            img_btn.Clicked += Start_Pages;
+
+
+            //В Layout добавляем созданные ранее элементы
+            StackLayout st = new StackLayout
+            {
+                Children = { box_btn, entry_btn, timer_btn, date_btn, ss_btn, rgb_sl_btn, frame_btn, img_btn }
             };
             st.BackgroundColor = Color.Beige;
 
@@ -95,6 +112,14 @@ namespace FirstMobileApp
             else if (sender== rgb_sl_btn)
             {
                 await Navigation.PushAsync(new RGB_Sliders_Page());
+            }
+            else if (sender==frame_btn)
+            {
+                await Navigation.PushAsync(new Frames_Page());
+            }
+            else if( sender == img_btn)
+            {
+                await Navigation.PushAsync(new Images_Page());
             }
 
         }
