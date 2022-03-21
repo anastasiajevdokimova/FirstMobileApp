@@ -115,17 +115,17 @@ namespace FirstMobileApp
             if (sender == sl_red)
             {
                 lbl_red.Text = String.Format("Red = {0:X2}", Convert.ToInt32(args.NewValue).ToString());
-                sl_red.Value = args.NewValue;
+                //sl_red.Value = args.NewValue;
             }
             else if (sender == sl_green)
             {
                 lbl_green.Text = String.Format("Green = {0:X2}", Convert.ToInt32(args.NewValue).ToString());
-                sl_green.Value = args.NewValue;
+                //sl_green.Value = args.NewValue;
             }
             else if (sender == sl_blue)
             {
                 lbl_blue.Text = String.Format("Blue = {0:X2}", Convert.ToInt32(args.NewValue).ToString());
-                sl_blue.Value = args.NewValue;
+                //sl_blue.Value = args.NewValue;
             }
 
              lbl_rgb.BackgroundColor = Color.FromRgb(sl_red.Value = Convert.ToInt32(args.NewValue), 
