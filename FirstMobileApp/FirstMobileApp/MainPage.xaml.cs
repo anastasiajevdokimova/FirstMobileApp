@@ -10,42 +10,94 @@ namespace FirstMobileApp
 {
     public partial class MainPage : ContentPage
     {
+        Button box_btn, entry_btn, timer_btn, date_btn, ss_btn, rgb_sl_btn;
         public MainPage()
         {
             //создаём первую кнопку
-            Button box_btn = new Button
+            box_btn = new Button
             {
                 Text = "BoxPage",
-                BackgroundColor = Color.Crimson
+                BackgroundColor = Color.Red
             };
-            box_btn.Clicked += Box_btn_Clicked; //связь кнопки с методом
+            //box_btn.Clicked += Box_btn_Clicked; //связь кнопки с методом
+            box_btn.Clicked += Start_Pages;
 
-            Button entry_btn = new Button
+            entry_btn = new Button
             {
                 Text = "Entry",
-                BackgroundColor = Color.Blue,
+                BackgroundColor = Color.Orange,
             };
-            entry_btn.Clicked += Entry_btn_Clicked;
+            entry_btn.Clicked += Start_Pages;
+
+            timer_btn = new Button
+            {
+                Text = "Timer",
+                BackgroundColor = Color.Yellow
+            };
+            timer_btn.Clicked += Start_Pages;
+
+            date_btn = new Button
+            {
+                Text = "Date/Time",
+                BackgroundColor = Color.Green
+            };
+            date_btn.Clicked += Start_Pages;
+
+            ss_btn = new Button
+            {
+                Text = "Stepper-Slider",
+                BackgroundColor = Color.LightBlue
+            };
+            ss_btn.Clicked += Start_Pages;
+
+            rgb_sl_btn = new Button
+            {
+                Text = "RGB Color Sliders",
+                BackgroundColor = Color.Blue,
+                TextColor = Color.White
+            };
+            rgb_sl_btn.Clicked += Start_Pages;
 
                 //В Layout добавляем созданные ранее элементы
                 StackLayout st = new StackLayout
             {
-                Children = { box_btn, entry_btn }
+                Children = { box_btn, entry_btn, timer_btn, date_btn, ss_btn, rgb_sl_btn }
             };
             st.BackgroundColor = Color.Beige;
-            
+
             //Привязка к Content = видим элементы
             Content = st;
         }
 
-        private async void Entry_btn_Clicked(object sender, EventArgs e)
+        private async void Start_Pages(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Entry_Page()); //создаём страницу Entry_Page
+            Button btn = (Button)sender; //проверяем не нажали ли на какую-нибудь кнопку
+            if (sender==entry_btn)
+            {
+                await Navigation.PushAsync(new Entry_Page()); //создаём страницу Entry_Page
+            }
+            else if (sender==box_btn)
+            {
+                await Navigation.PushAsync(new Box_Page()); //создаём страницу Box_Page
+            }
+            else if (sender==timer_btn)
+            {
+                await Navigation.PushAsync(new Timer_Page());
+            }
+            else if (sender==date_btn)
+            {
+                await Navigation.PushAsync(new Data_Page()); //создаём страницу Data_Page
+            }
+            else if (sender==ss_btn)
+            {
+                await Navigation.PushAsync(new Step_Slid_Page());
+            }
+            else if (sender== rgb_sl_btn)
+            {
+                await Navigation.PushAsync(new RGB_Sliders_Page());
+            }
+
         }
 
-        private async void Box_btn_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Box_Page()); //создаём страницу Box_Page
-        }
     }
 }

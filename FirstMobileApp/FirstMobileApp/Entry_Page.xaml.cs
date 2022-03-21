@@ -32,6 +32,7 @@ namespace FirstMobileApp
             Content = st;
         }
 
+        
         int i = 0;
         private void Editor_TextChanged(object sender, TextChangedEventArgs e)
         {
