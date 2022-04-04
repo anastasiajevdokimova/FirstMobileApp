@@ -140,44 +140,6 @@ namespace FirstMobileApp
                 }
             }
         }
-
-        //private void Edasi_Clicked(object sender, EventArgs e)
-        //{
-        //    if (webView.CanGoForward)
-        //    {
-        //        webView.GoForward();
-        //    }
-        //}
-
-        //private void Tagasi_Clicked(object sender, EventArgs e)
-        //{
-        //    if (webView.CanGoBack)
-        //    {
-        //        webView.GoBack();
-        //    }
-        //}
-
-        //private void Kodu_Clicked(object sender, EventArgs e)
-        //{
-        //    webView.Source = new UrlWebViewSource { Url = lehed[3] };
-
-        //}
-
-        //private async void Lisa_Clicked(object sender, EventArgs e)
-        //{
-        //    if(entry.Text != "")
-        //    {
-        //        lehed.Add("https://" + entry.Text);
-        //        picker.Items.Add(entry.Text);
-        //        await DisplayAlert("★", "Uus järjehoidja oli lisatud!", "OK");
-        //    }
-        //    else
-        //    {
-        //        await DisplayAlert("Hoiatus!", "Veebiaadress ei ole sisestanud! Ei ole võimalik järjehoidjat lisada!!", "Sain aru");
-        //    }
-
-        //}
-
         private void Entry_Completed(object sender, EventArgs e)
         {
             webView.Source = "https://" + entry.Text;
