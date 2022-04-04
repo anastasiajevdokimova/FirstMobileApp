@@ -46,7 +46,7 @@ namespace FirstMobileApp
                 WidthRequest = 40,
                 HeightRequest = 40
             };
-            lisa.Clicked += Lisa_Clicked;
+            lisa.Clicked += Buttons_Clicked;
 
             kodu = new ImageButton
             {
@@ -54,7 +54,7 @@ namespace FirstMobileApp
                 HeightRequest = 40,
                 WidthRequest = 40
             };
-            kodu.Clicked += Kodu_Clicked;
+            kodu.Clicked += Buttons_Clicked;
 
             tagasi = new ImageButton
             {
@@ -62,7 +62,7 @@ namespace FirstMobileApp
                 HeightRequest = 40,
                 WidthRequest = 40
             };
-            tagasi.Clicked += Tagasi_Clicked;
+            tagasi.Clicked += Buttons_Clicked;
 
             edasi = new ImageButton
             {
@@ -70,7 +70,7 @@ namespace FirstMobileApp
                 HeightRequest = 40,
                 WidthRequest = 40
             };
-            edasi.Clicked += Edasi_Clicked;
+            edasi.Clicked += Buttons_Clicked;
 
             webView = new WebView { };
             SwipeGestureRecognizer swipe = new SwipeGestureRecognizer();
@@ -106,42 +106,77 @@ namespace FirstMobileApp
             Content = st;
         }
 
-        private void Edasi_Clicked(object sender, EventArgs e)
+        private async void Buttons_Clicked(object sender, EventArgs e)
         {
-            if (webView.CanGoForward)
+            if (sender == lisa)
             {
-                webView.GoForward();
+                if (entry.Text != "")
+                {
+                    lehed.Add("https://" + entry.Text);
+                    picker.Items.Add(entry.Text);
+                    await DisplayAlert("★", "Uus järjehoidja oli lisatud!", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Hoiatus!", "Veebiaadress ei ole sisestanud! Ei ole võimalik järjehoidjat lisada!!", "Sain aru");
+                }
+            }
+            else if (sender == kodu)
+            {
+                webView.Source = new UrlWebViewSource { Url = lehed[3] };
+            }
+            else if(sender == tagasi)
+            {
+                if (webView.CanGoBack)
+                {
+                    webView.GoBack();
+                }
+            }
+            else if (sender == edasi)
+            {
+                if (webView.CanGoForward)
+                {
+                    webView.GoForward();
+                }
             }
         }
 
-        private void Tagasi_Clicked(object sender, EventArgs e)
-        {
-            if (webView.CanGoBack)
-            {
-                webView.GoBack();
-            }
-        }
+        //private void Edasi_Clicked(object sender, EventArgs e)
+        //{
+        //    if (webView.CanGoForward)
+        //    {
+        //        webView.GoForward();
+        //    }
+        //}
 
-        private void Kodu_Clicked(object sender, EventArgs e)
-        {
-            webView.Source = new UrlWebViewSource { Url = lehed[3] };
+        //private void Tagasi_Clicked(object sender, EventArgs e)
+        //{
+        //    if (webView.CanGoBack)
+        //    {
+        //        webView.GoBack();
+        //    }
+        //}
 
-        }
+        //private void Kodu_Clicked(object sender, EventArgs e)
+        //{
+        //    webView.Source = new UrlWebViewSource { Url = lehed[3] };
 
-        private async void Lisa_Clicked(object sender, EventArgs e)
-        {
-            if(entry.Text != "")
-            {
-                lehed.Add("https://" + entry.Text);
-                picker.Items.Add(entry.Text);
-                await DisplayAlert("★", "Uus järjehoidja oli lisatud!", "OK");
-            }
-            else
-            {
-                await DisplayAlert("Hoiatus!", "Veebiaadress ei ole sisestanud! Ei ole võimalik järjehoidjat lisada!!", "Sain aru");
-            }
+        //}
 
-        }
+        //private async void Lisa_Clicked(object sender, EventArgs e)
+        //{
+        //    if(entry.Text != "")
+        //    {
+        //        lehed.Add("https://" + entry.Text);
+        //        picker.Items.Add(entry.Text);
+        //        await DisplayAlert("★", "Uus järjehoidja oli lisatud!", "OK");
+        //    }
+        //    else
+        //    {
+        //        await DisplayAlert("Hoiatus!", "Veebiaadress ei ole sisestanud! Ei ole võimalik järjehoidjat lisada!!", "Sain aru");
+        //    }
+
+        //}
 
         private void Entry_Completed(object sender, EventArgs e)
         {
