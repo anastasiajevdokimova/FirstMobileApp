@@ -19,7 +19,7 @@ namespace FirstMobileApp
         Entry entry;
         Button lisa;
         ImageButton kodu, tagasi, edasi;
-        String veeb;
+        //String veeb;
         List<string> lehed = new List<string> { "https://tahvel.edu.ee/", "https://moodle.edu.ee/", "https://www.tthk.ee/", "https://www.google.com/" };
 
         public Picker_Page()

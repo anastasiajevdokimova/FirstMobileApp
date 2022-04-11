@@ -10,7 +10,7 @@ namespace FirstMobileApp
 {
     public partial class MainPage : ContentPage
     {
-        Button box_btn, entry_btn, timer_btn, date_btn, ss_btn, rgb_sl_btn, frame_btn, img_btn, picker_btn;
+        Button box_btn, entry_btn, timer_btn, date_btn, ss_btn, rgb_sl_btn, frame_btn, img_btn, picker_btn, table_btn;
         public MainPage()
         {
             //создаём первую кнопку
@@ -53,7 +53,7 @@ namespace FirstMobileApp
             rgb_sl_btn = new Button
             {
                 Text = "RGB Color Sliders",
-                BackgroundColor = Color.Green,
+                BackgroundColor = Color.Chartreuse,
                 TextColor = Color.White
             };
             rgb_sl_btn.Clicked += Start_Pages;
@@ -61,7 +61,7 @@ namespace FirstMobileApp
             frame_btn = new Button
             {
                 Text = "Frame Page",
-                BackgroundColor = Color.LightBlue,
+                BackgroundColor = Color.Green,
                 TextColor = Color.White
             };
             frame_btn.Clicked += Start_Pages;
@@ -69,7 +69,7 @@ namespace FirstMobileApp
             img_btn = new Button
             {
                 Text = "Image Slider",
-                BackgroundColor = Color.Blue,
+                BackgroundColor = Color.LightBlue,
                 TextColor = Color.White
             };
             img_btn.Clicked += Start_Pages;
@@ -77,16 +77,25 @@ namespace FirstMobileApp
             picker_btn = new Button
             {
                 Text = "Picker",
-                BackgroundColor = Color.Purple,
+                BackgroundColor = Color.Blue,
                 TextColor = Color.White
             };
             picker_btn.Clicked += Start_Pages;
+
+            table_btn = new Button
+            {
+                Text = "Table Page",
+                BackgroundColor = Color.Purple,
+                TextColor = Color.White
+            };
+            table_btn.Clicked += Start_Pages;
+
 
 
             //В Layout добавляем созданные ранее элементы
             StackLayout st = new StackLayout
             {
-                Children = { box_btn, entry_btn, timer_btn, date_btn, ss_btn, rgb_sl_btn, frame_btn, img_btn, picker_btn }
+                Children = { box_btn, entry_btn, timer_btn, date_btn, ss_btn, rgb_sl_btn, frame_btn, img_btn, picker_btn, table_btn }
             };
             st.BackgroundColor = Color.Beige;
 
@@ -132,6 +141,10 @@ namespace FirstMobileApp
             else if(sender == picker_btn)
             {
                 await Navigation.PushAsync(new Picker_Page());
+            }
+            else if(sender == table_btn)
+            {
+                await Navigation.PushAsync(new Table_Page());
             }
 
         }
